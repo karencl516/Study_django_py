@@ -1,0 +1,27 @@
+{% extends 'todo/layout.html' %}
+
+{% block content %}
+    <div class="container text-center">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tarea</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ task }}</td>
+                    <td>
+                        <a  href="{% url 'delete' task.id %}" class="btn btn-danger btn btn-primary btn-sm">Delete</a>
+                        <a href="{% url 'edit' task.id %}" class="btn btn-primary btn btn-primary btn-sm">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+{% endblock %}
